@@ -18,47 +18,6 @@ get_header();
 
         <?php get_search_form(); ?>
 
-        <div class="widget-area">
-            <h2><?php _e('Most Used Categories', 'reventor-brizy'); ?></h2>
-            <ul>
-                <?php
-                wp_list_categories(array(
-                    'orderby'    => 'count',
-                    'order'      => 'DESC',
-                    'show_count' => 1,
-                    'title_li'   => '',
-                    'number'     => 10,
-                ));
-                ?>
-            </ul>
-        </div>
-
-        <?php
-        // Get recent posts
-        $recent_posts = wp_get_recent_posts(array(
-            'numberposts' => 5,
-            'post_status' => 'publish'
-        ));
-        
-        if (!empty($recent_posts)) :
-            ?>
-            <div class="widget-area">
-                <h2><?php _e('Try looking in the monthly archives.', 'reventor-brizy'); ?></h2>
-                <ul>
-                    <?php foreach ($recent_posts as $recent) : ?>
-                        <li>
-                            <a href="<?php echo get_permalink($recent['ID']); ?>">
-                                <?php echo $recent['post_title']; ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-            <?php
-            wp_reset_query();
-        endif;
-        ?>
-
         <div class="home-link">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="button">
                 <?php _e('← Back to Homepage', 'reventor-brizy'); ?>

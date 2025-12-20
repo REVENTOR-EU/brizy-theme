@@ -5,8 +5,8 @@
  */
 ?>
 
-        </main><!-- #main -->
-    </div><!-- #content -->
+        </main>
+    </div>
 
     <footer id="colophon" class="site-footer">
         <div class="footer-container">
@@ -21,17 +21,17 @@
                     'depth'          => 1,
                 ));
                 ?>
-            </nav><!-- #footer-navigation -->
+            </nav>
             
             <div class="site-info">
                 <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. 
                    <?php _e('All rights reserved.', 'reventor-brizy'); ?>
                 </p>
-            </div><!-- .site-info -->
-        </div><!-- .footer-container -->
-    </footer><!-- #colophon -->
+            </div>
+        </div>
+    </footer>
 
-</div><!-- #page -->
+</div>
 
 <?php wp_footer(); ?>
 

@@ -39,12 +39,12 @@
                     $description = get_bloginfo('description', 'display');
                     if ($description || is_customize_preview()) :
                         ?>
-                        <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+                        <p class="site-description"><?php echo $description; ?></p>
                         <?php
                     endif;
                 }
                 ?>
-            </div><!-- .site-branding -->
+            </div>
 
             <nav id="site-navigation" class="main-navigation">
                 <?php
@@ -56,9 +56,9 @@
                     'fallback_cb'    => 'reventor_brizy_fallback_menu',
                 ));
                 ?>
-            </nav><!-- #site-navigation -->
-        </div><!-- .header-container -->
-    </header><!-- #masthead -->
+            </nav>
+        </div>
+    </header>
 
     <div id="content" class="site-content">
         <main id="main" class="site-main" role="main">

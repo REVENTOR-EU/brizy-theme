@@ -1,8 +1,10 @@
-# Brizy Theme
+# REVENTOR - Brizy Theme
 
 [![WordPress](https://img.shields.io/badge/WordPress-5.0+-blue.svg)](https://wordpress.org/)
 [![Brizy](https://img.shields.io/badge/Brizy-1.0+-green.svg)](https://brizy.io/)
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
+
+**IMPORTANT: This theme is made by REVENTOR - A Minimal WordPress Theme for Maximum Compatibility with Brizy Builder. It is NOT built by the official Brizy Team.**
 
 A minimal WordPress theme designed specifically for maximum compatibility with Brizy page builder. This theme provides only essential WordPress functionality while letting Brizy handle all design and layout decisions.
 
@@ -14,6 +16,7 @@ This theme serves as the ultimate starter theme for any Brizy-based website, off
 - **No Bloat**: Only essential WordPress functionality, no unnecessary extras
 - **Clean Foundation**: Minimal CSS that doesn't interfere with Brizy elements
 - **Full Flexibility**: Complete creative freedom within Brizy
+- **REVENTOR Built**: Created by REVENTOR for the Brizy community, not affiliated with the official Brizy team
 
 ## ✨ Key Features
 
@@ -47,7 +50,7 @@ This theme serves as the ultimate starter theme for any Brizy-based website, off
 1. **Download the Theme**
    ```bash
    # Clone the repository
-   git clone https://github.com/your-username/brizy-theme.git
+   git clone https://github.com/reventor/brizy-theme.git
    
    # Or download as ZIP and extract to wp-content/themes/
    ```
@@ -58,7 +61,7 @@ This theme serves as the ultimate starter theme for any Brizy-based website, off
 
 3. **Activate the Theme**
    - Go to WordPress Admin → Appearance → Themes
-   - Find "Brizy Theme" and click "Activate"
+   - Find "REVENTOR - Brizy Theme" and click "Activate"
 
 4. **Configure Brizy**
    - Install and activate the Brizy Page Builder plugin
@@ -157,7 +160,7 @@ For support and questions:
 
 - **Brizy Documentation**: [https://docs.brizy.io/](https://docs.brizy.io/)
 - **WordPress Support**: [https://wordpress.org/support/](https://wordpress.org/support/)
-- **Issue Reports**: [GitHub Issues](https://github.com/your-username/brizy-theme/issues)
+- **Issue Reports**: [GitHub Issues](https://github.com/reventor/brizy-theme/issues)
 
 ## 🙏 Acknowledgments
 
@@ -166,4 +169,4 @@ For support and questions:
 
 ---
 
-**Built with ❤️ for Brizy users everywhere**
+**Built with ❤️ by REVENTOR for Brizy users everywhere**

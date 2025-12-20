@@ -1,6 +1,6 @@
 /*
-Theme Name: REVENTOR - Basic Theme for Brizy Builder
-Description: A minimal WordPress theme designed specifically for maximum compatibility with Brizy page builder. This theme provides only essential WordPress functionality while letting Brizy handle all design and layout decisions.
+Theme Name: Brizy Starter Theme
+Description: A minimal WordPress theme designed specifically for maximum compatibility with Brizy page builder. This theme is NOT built by the official Brizy team. It provides only essential WordPress functionality while letting Brizy handle all design and layout decisions.
 Author: REVENTOR
 Version: 1.0.0
 License: GPL v2 or later
@@ -24,16 +24,7 @@ body {
     padding: 0;
 }
 
-/* Clean foundation for Brizy - no styling that could interfere */
-#page {
-    min-height: 100vh;
-}
-
-.site-content {
-    width: 100%;
-}
-
-/* Essential accessibility and basic structure */
+/* Essential accessibility */
 .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute !important;
@@ -50,7 +41,6 @@ body {
     color: #21759b;
     display: block;
     font-size: 14px;
-    font-size: 0.875rem;
     font-weight: bold;
     height: auto;
     left: 5px;
@@ -62,7 +52,7 @@ body {
     z-index: 100000;
 }
 
-/* Brizy compatibility - clear margins and padding */
+/* Brizy compatibility - minimal interference */
 .brizy-content,
 .brizy-container,
 .brizy-section,
@@ -72,18 +62,4 @@ body {
 .brizy-element {
     margin: 0 !important;
     padding: 0 !important;
-}
-
-/* Full width support for Brizy */
-.brizy-full-width {
-    width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-}
-
-/* Remove theme constraints from Brizy elements */
-.brizy-content *,
-.brizy-content *::before,
-.brizy-content *::after {
-    box-sizing: content-box !important;
 }
