@@ -1,0 +1,39 @@
+<?php
+/**
+ * Footer template for REVENTOR Brizy Theme
+ * Clean, minimal footer designed for Brizy page builder compatibility
+ */
+?>
+
+        </main><!-- #main -->
+    </div><!-- #content -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="footer-container">
+            <nav id="footer-navigation" class="footer-navigation">
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'footer',
+                    'menu_id'        => 'footer-menu',
+                    'menu_class'     => 'footer-nav-menu',
+                    'container'      => false,
+                    'fallback_cb'    => 'reventor_brizy_fallback_footer_menu',
+                    'depth'          => 1,
+                ));
+                ?>
+            </nav><!-- #footer-navigation -->
+            
+            <div class="site-info">
+                <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. 
+                   <?php _e('All rights reserved.', 'reventor-brizy'); ?>
+                </p>
+            </div><!-- .site-info -->
+        </div><!-- .footer-container -->
+    </footer><!-- #colophon -->
+
+</div><!-- #page -->
+
+<?php wp_footer(); ?>
+
+</body>
+</html>

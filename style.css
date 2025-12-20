@@ -1,0 +1,89 @@
+/*
+Theme Name: REVENTOR - Basic Theme for Brizy Builder
+Description: A minimal WordPress theme designed specifically for maximum compatibility with Brizy page builder. This theme provides only essential WordPress functionality while letting Brizy handle all design and layout decisions.
+Author: REVENTOR
+Version: 1.0.0
+License: GPL v2 or later
+Text Domain: reventor-brizy
+*/
+
+/* Minimal CSS Reset for Brizy Compatibility */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Clean foundation for Brizy - no styling that could interfere */
+#page {
+    min-height: 100vh;
+}
+
+.site-content {
+    width: 100%;
+}
+
+/* Essential accessibility and basic structure */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+/* Brizy compatibility - clear margins and padding */
+.brizy-content,
+.brizy-container,
+.brizy-section,
+.brizy-column,
+.brizy-group,
+.brizy-wrapper,
+.brizy-element {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Full width support for Brizy */
+.brizy-full-width {
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+}
+
+/* Remove theme constraints from Brizy elements */
+.brizy-content *,
+.brizy-content *::before,
+.brizy-content *::after {
+    box-sizing: content-box !important;
+}
