@@ -1,6 +1,6 @@
 <?php
 /**
- * Footer template for REVENTOR Brizy Theme
+ * Footer template for Brizy Theme
  * Clean, minimal footer designed for Brizy page builder compatibility
  */
 ?>

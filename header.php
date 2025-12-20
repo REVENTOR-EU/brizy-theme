@@ -1,6 +1,6 @@
 <?php
 /**
- * Header template for REVENTOR Brizy Theme
+ * Header template for Brizy Theme
  * Clean, minimal header designed for Brizy page builder compatibility
  */
 ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * REVENTOR - Brizy Theme
+ * Brizy Theme
  * 
  * A minimal WordPress theme designed specifically for maximum compatibility 
  * with Brizy page builder. This theme is NOT built by the official Brizy team.

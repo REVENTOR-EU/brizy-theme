@@ -1,4 +1,4 @@
-# REVENTOR - Brizy Theme
+# Brizy Theme
 
 [![WordPress](https://img.shields.io/badge/WordPress-5.0+-blue.svg)](https://wordpress.org/)
 [![Brizy](https://img.shields.io/badge/Brizy-1.0+-green.svg)](https://brizy.io/)
@@ -61,7 +61,7 @@ This theme serves as the ultimate starter theme for any Brizy-based website, off
 
 3. **Activate the Theme**
    - Go to WordPress Admin → Appearance → Themes
-   - Find "REVENTOR - Brizy Theme" and click "Activate"
+   - Find "Brizy Theme" and click "Activate"
 
 4. **Configure Brizy**
    - Install and activate the Brizy Page Builder plugin
