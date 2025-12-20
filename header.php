@@ -18,7 +18,7 @@
 <?php wp_body_open(); ?>
 
 <div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#main"><?php _e('Skip to content', 'reventor-brizy'); ?></a>
+    <a class="skip-link screen-reader-text" href="#main"><?php _e('Skip to content', 'brizy-theme'); ?></a>
 
     <header id="masthead" class="site-header">
         <div class="header-container">
@@ -53,7 +53,7 @@
                     'menu_id'        => 'primary-menu',
                     'menu_class'     => 'nav-menu',
                     'container'      => false,
-                    'fallback_cb'    => 'reventor_brizy_fallback_menu',
+                    'fallback_cb'    => 'brizy_theme_fallback_menu',
                 ));
                 ?>
             </nav>

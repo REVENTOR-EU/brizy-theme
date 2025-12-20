@@ -22,7 +22,7 @@ get_header();
                 </span>
                 
                 <span class="byline">
-                    <?php _e('by', 'reventor-brizy'); ?> 
+                    <?php _e('by', 'brizy-theme'); ?>
                     <span class="author vcard">
                         <a class="url fn n" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>">
                             <?php echo get_the_author(); ?>
@@ -32,7 +32,7 @@ get_header();
                 
                 <?php if (has_category()) : ?>
                     <span class="cat-links">
-                        <?php _e('in', 'reventor-brizy'); ?> <?php the_category(', '); ?>
+                        <?php _e('in', 'brizy-theme'); ?> <?php the_category(', '); ?>
                     </span>
                 <?php endif; ?>
                 
@@ -55,7 +55,7 @@ get_header();
             the_content();
             
             wp_link_pages(array(
-                'before' => '<div class="page-links">' . __('Pages:', 'reventor-brizy'),
+                'before' => '<div class="page-links">' . __('Pages:', 'brizy-theme'),
                 'after'  => '</div>',
             ));
             ?>
@@ -65,8 +65,8 @@ get_header();
             <?php
             // Post navigation
             the_post_navigation(array(
-                'prev_text' => '<span class="nav-subtitle">' . __('Previous:', 'reventor-brizy') . '</span> <span class="nav-title">%title</span>',
-                'next_text' => '<span class="nav-subtitle">' . __('Next:', 'reventor-brizy') . '</span> <span class="nav-title">%title</span>',
+                'prev_text' => '<span class="nav-subtitle">' . __('Previous:', 'brizy-theme') . '</span> <span class="nav-title">%title</span>',
+                'next_text' => '<span class="nav-subtitle">' . __('Next:', 'brizy-theme') . '</span> <span class="nav-title">%title</span>',
             ));
             ?>
         </footer>

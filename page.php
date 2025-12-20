@@ -20,7 +20,7 @@ get_header();
             the_content();
             
             wp_link_pages(array(
-                'before' => '<div class="page-links">' . __('Pages:', 'reventor-brizy'),
+                'before' => '<div class="page-links">' . __('Pages:', 'brizy-theme'),
                 'after'  => '</div>',
             ));
             ?>

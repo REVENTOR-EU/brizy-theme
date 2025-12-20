@@ -17,15 +17,15 @@
                     'menu_id'        => 'footer-menu',
                     'menu_class'     => 'footer-nav-menu',
                     'container'      => false,
-                    'fallback_cb'    => 'reventor_brizy_fallback_footer_menu',
+                    'fallback_cb'    => 'brizy_theme_fallback_footer_menu',
                     'depth'          => 1,
                 ));
                 ?>
             </nav>
             
             <div class="site-info">
-                <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. 
-                   <?php _e('All rights reserved.', 'reventor-brizy'); ?>
+                <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>.
+                   <?php _e('All rights reserved.', 'brizy-theme'); ?>
                 </p>
             </div>
         </div>

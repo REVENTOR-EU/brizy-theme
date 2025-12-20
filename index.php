@@ -26,7 +26,7 @@ get_header();
                     
                     <div class="entry-meta">
                         <span class="posted-on"><?php echo get_the_date(); ?></span>
-                        <span class="byline"><?php _e('by', 'reventor-brizy'); ?> <?php the_author(); ?></span>
+                        <span class="byline"><?php _e('by', 'brizy-theme'); ?> <?php the_author(); ?></span>
                     </div>
                 </header>
 
@@ -49,8 +49,8 @@ get_header();
     <?php
     // Pagination
     the_posts_pagination(array(
-        'prev_text' => __('Previous', 'reventor-brizy'),
-        'next_text' => __('Next', 'reventor-brizy'),
+        'prev_text' => __('Previous', 'brizy-theme'),
+        'next_text' => __('Next', 'brizy-theme'),
     ));
     ?>
 
@@ -58,17 +58,17 @@ get_header();
 
     <section class="no-results not-found">
         <header class="page-header">
-            <h1 class="page-title"><?php _e('Nothing here', 'reventor-brizy'); ?></h1>
+            <h1 class="page-title"><?php _e('Nothing here', 'brizy-theme'); ?></h1>
         </header>
 
         <div class="page-content">
             <?php if (is_home() && current_user_can('publish_posts')) : ?>
-                <p><?php printf(__('Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'reventor-brizy'), esc_url(admin_url('post-new.php'))); ?></p>
+                <p><?php printf(__('Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'brizy-theme'), esc_url(admin_url('post-new.php'))); ?></p>
             <?php elseif (is_search()) : ?>
-                <p><?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'reventor-brizy'); ?></p>
+                <p><?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'brizy-theme'); ?></p>
                 <?php get_search_form(); ?>
             <?php else : ?>
-                <p><?php _e('It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'reventor-brizy'); ?></p>
+                <p><?php _e('It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'brizy-theme'); ?></p>
                 <?php get_search_form(); ?>
             <?php endif; ?>
         </div>

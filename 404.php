@@ -10,17 +10,17 @@ get_header();
 <div class="error-404 not-found">
     
     <header class="page-header">
-        <h1 class="page-title"><?php _e('Oops! That page can&rsquo;t be found.', 'reventor-brizy'); ?></h1>
+        <h1 class="page-title"><?php _e('Oops! That page can&rsquo;t be found.', 'brizy-theme'); ?></h1>
     </header>
 
     <div class="page-content">
-        <p><?php _e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'reventor-brizy'); ?></p>
+        <p><?php _e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'brizy-theme'); ?></p>
 
         <?php get_search_form(); ?>
 
         <div class="home-link">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="button">
-                <?php _e('← Back to Homepage', 'reventor-brizy'); ?>
+                <?php _e('← Back to Homepage', 'brizy-theme'); ?>
             </a>
         </div>
     </div>
