@@ -51,7 +51,7 @@ This theme serves as the ultimate starter theme for any Brizy-based website, off
    ```bash
    # Clone the repository
    git clone https://github.com/reventor/brizy-theme.git
-   
+
    # Or download as ZIP and extract to wp-content/themes/
    ```
 
@@ -63,9 +63,15 @@ This theme serves as the ultimate starter theme for any Brizy-based website, off
    - Go to WordPress Admin → Appearance → Themes
    - Find "Brizy Theme" and click "Activate"
 
-4. **Configure Brizy**
-   - Install and activate the Brizy Page Builder plugin
-   - Start creating pages with Brizy's visual editor
+4. **Install Brizy Plugin**
+   - Go to WordPress Admin → Plugins → Add New
+   - Search for "Brizy"
+   - Click "Install Now" and then "Activate"
+
+5. **Start Creating**
+   - Create a new page or post
+   - Select "Brizy Template" from the page template dropdown
+   - Click "Edit with Brizy" to start designing
 
 ## 📁 Theme Structure
 
@@ -105,7 +111,7 @@ Basic responsive framework that Brizy can build upon for mobile-friendly designs
 
 ### Creating Pages with Brizy
 1. Create a new page in WordPress
-2. Click "Edit with Brizy" 
+2. Click "Edit with Brizy"
 3. Design your page using Brizy's visual editor
 4. Publish and enjoy your custom design
 
@@ -124,6 +130,10 @@ While the theme is designed to be minimal, you can extend it by:
 - Heavy JavaScript libraries or frameworks
 - Complex theme options or customizers
 - Page builders other than Brizy
+- Automatic plugin installation (to comply with WordPress.org guidelines)
+
+### Manual Plugin Installation
+This theme does NOT automatically install the Brizy plugin. This is intentional to follow WordPress.org theme guidelines. You must manually install and activate the Brizy plugin from the WordPress Plugin Directory. See the Installation section above for detailed steps.
 
 ### Best Practices
 - Always use Brizy for page design and layout
