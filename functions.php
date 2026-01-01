@@ -113,14 +113,13 @@ function reventor_brizy_activation_notice() {
 
 	// Check if Brizy is already active
 	if ( is_plugin_active( 'brizy-editor/brizy-editor.php' ) ) {
+		// Clear the notice flag if Brizy is now active
+		delete_option( 'reventor_brizy_show_notice' );
 		return;
 	}
 
-	// Store the flag to show notice only once
-	if ( ! get_option( 'reventor_brizy_activation_notice_shown' ) ) {
-		set_transient( 'reventor_brizy_activation_notice', true, 5 * MINUTE_IN_SECONDS );
-		update_option( 'reventor_brizy_activation_notice_shown', true );
-	}
+	// Set flag to show the notice
+	update_option( 'reventor_brizy_show_notice', true );
 }
 add_action( 'after_switch_theme', 'reventor_brizy_activation_notice' );
 
@@ -128,11 +127,6 @@ add_action( 'after_switch_theme', 'reventor_brizy_activation_notice' );
  * Show admin notice with Brizy installation suggestion
  */
 function reventor_brizy_show_activation_notice() {
-	// Check if notice should be displayed
-	if ( ! get_transient( 'reventor_brizy_activation_notice' ) ) {
-		return;
-	}
-
 	// Include the required file for is_plugin_active() function
 	if ( ! function_exists( 'is_plugin_active' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -140,6 +134,12 @@ function reventor_brizy_show_activation_notice() {
 
 	// Check if Brizy is already active
 	if ( is_plugin_active( 'brizy-editor/brizy-editor.php' ) ) {
+		delete_option( 'reventor_brizy_show_notice' );
+		return;
+	}
+
+	// Check if notice should be displayed
+	if ( ! get_option( 'reventor_brizy_show_notice' ) ) {
 		return;
 	}
 
@@ -173,7 +173,7 @@ function reventor_brizy_show_activation_notice() {
 	);
 
 	?>
-	<div class="notice notice-info is-dismissible">
+	<div class="notice notice-info is-dismissible" data-dismissible="reventor_brizy_dismiss">
 		<p>
 			<strong><?php _e( 'Welcome to Brizy Starter!', 'brizy-starter' ); ?></strong><br>
 			<?php _e( 'This theme is optimized for the Brizy page builder. To get the best experience, we recommend installing and activating the Brizy plugin.', 'brizy-starter' ); ?>
@@ -198,9 +198,51 @@ function reventor_brizy_show_activation_notice() {
 			?>
 		</p>
 	</div>
+	<script type="text/javascript">
+		(function() {
+			document.addEventListener('DOMContentLoaded', function() {
+				var dismissibleNotice = document.querySelector('.notice[data-dismissible="reventor_brizy_dismiss"]');
+				if (dismissibleNotice) {
+					dismissibleNotice.addEventListener('click', function(e) {
+						if (e.target.classList.contains('notice-dismiss')) {
+							var url = window.location.href;
+							if (url.indexOf('?') === -1) {
+								url += '?reventor_brizy_dismiss_notice=1&_wpnonce=' + '<?php echo wp_create_nonce( 'reventor_brizy_dismiss' ); ?>';
+							} else {
+								url += '&reventor_brizy_dismiss_notice=1&_wpnonce=' + '<?php echo wp_create_nonce( 'reventor_brizy_dismiss' ); ?>';
+							}
+							fetch(url);
+						}
+					});
+				}
+			});
+		})();
+	</script>
 	<?php
 }
 add_action( 'admin_notices', 'reventor_brizy_show_activation_notice' );
+
+/**
+ * Handle dismissal of Brizy activation notice
+ */
+function reventor_brizy_dismiss_notice() {
+	// Check if this is the dismiss action
+	if ( isset( $_GET['reventor_brizy_dismiss_notice'] ) && $_GET['reventor_brizy_dismiss_notice'] === '1' ) {
+		// Verify nonce
+		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'reventor_brizy_dismiss' ) ) {
+			return;
+		}
+
+		// Dismiss the notice
+		delete_option( 'reventor_brizy_show_notice' );
+
+		// Redirect back to the same page
+		wp_safe_remote_post( admin_url( 'admin.php' ), array(
+			'blocking' => false,
+		) );
+	}
+}
+add_action( 'admin_init', 'reventor_brizy_dismiss_notice' );
 
 /**
  * Note: Automatic plugin installation removed to comply with WordPress.org guidelines.
