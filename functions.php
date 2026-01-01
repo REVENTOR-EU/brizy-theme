@@ -237,9 +237,12 @@ function reventor_brizy_dismiss_notice() {
 		delete_option( 'reventor_brizy_show_notice' );
 
 		// Redirect back to the same page
-		wp_safe_remote_post( admin_url( 'admin.php' ), array(
-			'blocking' => false,
-		) );
+		wp_safe_remote_post(
+			admin_url( 'admin.php' ),
+			array(
+				'blocking' => false,
+			)
+		);
 	}
 }
 add_action( 'admin_init', 'reventor_brizy_dismiss_notice' );
