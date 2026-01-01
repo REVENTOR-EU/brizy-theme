@@ -36,6 +36,10 @@ function reventor_brizy_setup() {
         'primary' => __('Primary Menu', 'brizy-theme'),
         'footer'  => __('Footer Menu', 'brizy-theme'),
     ));
+    
+    // Disable Gutenberg editor globally
+    add_filter('use_block_editor_for_post_type', '__return_false', 100);
+    add_filter('use_block_editor_for_post', '__return_false', 100);
 }
 add_action('after_setup_theme', 'reventor_brizy_setup');
 
@@ -86,6 +90,92 @@ function brizy_theme_fallback_menu() {
     echo '<li><a href="' . esc_url(home_url('/')) . '">' . __('Home', 'brizy-theme') . '</a></li>';
     echo '</ul>';
 }
+
+/**
+ * Automatically install and activate Brizy plugin on theme activation
+ */
+function reventor_brizy_install_plugin() {
+    if (!current_user_can('install_plugins')) {
+        return;
+    }
+    
+    // Check if Brizy is already active
+    if (is_plugin_active('brizy-editor/brizy-editor.php')) {
+        return;
+    }
+    
+    // Include necessary WordPress files for plugin installation
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
+    include_once ABSPATH . 'wp-admin/includes/file.php';
+    include_once ABSPATH . 'wp-admin/includes/misc.php';
+    include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+    include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+    
+    // Check if Brizy is already installed
+    if (file_exists(WP_PLUGIN_DIR . '/brizy-editor/brizy-editor.php')) {
+        // Activate the plugin
+        activate_plugin('brizy-editor/brizy-editor.php');
+    } else {
+        // Install the plugin from WordPress.org
+        $api = plugins_api('plugin_information', array(
+            'slug' => 'brizy',
+            'fields' => array('sections' => false)
+        ));
+        
+        if (is_wp_error($api)) {
+            return;
+        }
+        
+        // Silent installer to avoid output
+        $upgrader = new Plugin_Upgrader(new WP_Automatic_Upgrader_Skin());
+        $upgrader->install($api->download_link);
+        
+        // Activate the plugin after installation
+        activate_plugin('brizy-editor/brizy-editor.php');
+    }
+}
+add_action('after_switch_theme', 'reventor_brizy_install_plugin');
+
+/**
+ * Automatically create Home page and set as static homepage on theme activation
+ */
+function reventor_brizy_create_home_page() {
+    // Check if Home page already exists
+    $home_page = get_page_by_title('Home');
+    
+    // Create Home page if it doesn't exist
+    if (!$home_page) {
+        $home_page_id = wp_insert_post(array(
+            'post_title'    => 'Home',
+            'post_content'  => '',
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
+            'post_author'   => 1,
+            'page_template' => 'brizy-blank-template.php',
+        ));
+    } else {
+        $home_page_id = $home_page->ID;
+        // Update existing Home page to use Brizy template
+        update_post_meta($home_page_id, '_wp_page_template', 'brizy-blank-template.php');
+    }
+    
+    // Enable Brizy editor on the Home page if Brizy plugin is active
+    if (class_exists('Brizy_Editor_Post')) {
+        try {
+            $brizy_post = Brizy_Editor_Post::get($home_page_id);
+            $brizy_post->enable_editor();
+            $brizy_post->set_template('brizy-blank-template.php');
+            $brizy_post->save();
+        } catch (Exception $e) {
+            // Silently fail if Brizy is not fully loaded
+        }
+    }
+    
+    // Set the Home page as static front page
+    update_option('page_on_front', $home_page_id);
+    update_option('show_on_front', 'page');
+}
+add_action('after_switch_theme', 'reventor_brizy_create_home_page');
 
 /**
  * Fallback menu for footer navigation
