@@ -33,6 +33,27 @@ function reventor_brizy_setup() {
 		)
 	);
 	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'wp-block-styles' );
+
+	// Custom header support
+	add_theme_support(
+		'custom-header',
+		array(
+			'height'      => 250,
+			'width'       => 1200,
+			'flex-height' => true,
+			'flex-width'  => true,
+		)
+	);
+
+	// Custom background support
+	add_theme_support(
+		'custom-background',
+		array(
+			'default-color' => 'ffffff',
+		)
+	);
 
 	// Navigation menus
 	register_nav_menus(
@@ -54,9 +75,15 @@ add_action( 'after_setup_theme', 'reventor_brizy_setup' );
 function brizy_theme_scripts() {
 	wp_enqueue_style( 'brizy-starter-style', get_stylesheet_uri() );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'brizy-starter-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'brizy-starter-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '1.0.1', true );
+
+	// Load editor styles for better editor experience
+	if ( is_admin() ) {
+		add_editor_style( 'editor-style.css' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'brizy_theme_scripts' );
+add_action( 'admin_enqueue_scripts', 'brizy_theme_scripts' );
 
 /**
  * Brizy Compatibility - Full width support

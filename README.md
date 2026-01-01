@@ -153,7 +153,7 @@ We welcome contributions! Please follow these steps:
 
 ## 📋 Changelog
 
-### Version 1.0.0
+### Version 1.0.1
 - Initial release
 - Basic WordPress theme structure
 - Brizy compatibility features
