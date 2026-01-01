@@ -1,6 +1,6 @@
 <?php
 /**
- * Brizy Theme
+ * Brizy Starter
  *
  * A minimal WordPress theme designed specifically for maximum compatibility
  * with Brizy page builder. This theme is NOT built by the official Brizy team.
@@ -37,8 +37,8 @@ function reventor_brizy_setup() {
 	// Navigation menus
 	register_nav_menus(
 		array(
-			'primary' => __( 'Primary Menu', 'brizy-theme' ),
-			'footer'  => __( 'Footer Menu', 'brizy-theme' ),
+			'primary' => __( 'Primary Menu', 'brizy-starter' ),
+			'footer'  => __( 'Footer Menu', 'brizy-starter' ),
 		)
 	);
 
@@ -52,9 +52,9 @@ add_action( 'after_setup_theme', 'reventor_brizy_setup' );
  * Enqueue minimal styles and scripts
  */
 function brizy_theme_scripts() {
-	wp_enqueue_style( 'brizy-theme-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'brizy-starter-style', get_stylesheet_uri() );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'brizy-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'brizy-starter-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'brizy_theme_scripts' );
 
@@ -80,9 +80,9 @@ add_action( 'after_setup_theme', 'reventor_brizy_full_width' );
 function reventor_brizy_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => __( 'Sidebar', 'brizy-theme' ),
+			'name'          => __( 'Sidebar', 'brizy-starter' ),
 			'id'            => 'sidebar-1',
-			'description'   => __( 'Add widgets here to appear in your sidebar.', 'brizy-theme' ),
+			'description'   => __( 'Add widgets here to appear in your sidebar.', 'brizy-starter' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -98,7 +98,7 @@ add_action( 'widgets_init', 'reventor_brizy_widgets_init' );
  */
 function brizy_theme_fallback_menu() {
 	echo '<ul class="nav-menu">';
-	echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home', 'brizy-theme' ) . '</a></li>';
+	echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home', 'brizy-starter' ) . '</a></li>';
 	echo '</ul>';
 }
 
@@ -106,6 +106,11 @@ function brizy_theme_fallback_menu() {
  * Display admin notice on theme activation suggesting Brizy plugin installation
  */
 function reventor_brizy_activation_notice() {
+	// Include the required file for is_plugin_active() function
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
 	// Check if Brizy is already active
 	if ( is_plugin_active( 'brizy-editor/brizy-editor.php' ) ) {
 		return;
@@ -126,6 +131,11 @@ function reventor_brizy_show_activation_notice() {
 	// Check if notice should be displayed
 	if ( ! get_transient( 'reventor_brizy_activation_notice' ) ) {
 		return;
+	}
+
+	// Include the required file for is_plugin_active() function
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 
 	// Check if Brizy is already active
@@ -165,8 +175,8 @@ function reventor_brizy_show_activation_notice() {
 	?>
 	<div class="notice notice-info is-dismissible">
 		<p>
-			<strong><?php _e( 'Welcome to Brizy Theme!', 'brizy-theme' ); ?></strong><br>
-			<?php _e( 'This theme is optimized for the Brizy page builder. To get the best experience, we recommend installing and activating the Brizy plugin.', 'brizy-theme' ); ?>
+			<strong><?php _e( 'Welcome to Brizy Starter!', 'brizy-starter' ); ?></strong><br>
+			<?php _e( 'This theme is optimized for the Brizy page builder. To get the best experience, we recommend installing and activating the Brizy plugin.', 'brizy-starter' ); ?>
 		</p>
 		<p>
 			<?php
@@ -174,14 +184,14 @@ function reventor_brizy_show_activation_notice() {
 				// Brizy is installed but not active
 				?>
 				<a href="<?php echo esc_url( $activate_link ); ?>" class="button button-primary">
-					<?php _e( 'Activate Brizy', 'brizy-theme' ); ?>
+					<?php _e( 'Activate Brizy', 'brizy-starter' ); ?>
 				</a>
 				<?php
 			} else {
 				// Brizy is not installed
 				?>
 				<a href="<?php echo esc_url( $install_link ); ?>" class="button button-primary">
-					<?php _e( 'Install Brizy', 'brizy-theme' ); ?>
+					<?php _e( 'Install Brizy', 'brizy-starter' ); ?>
 				</a>
 				<?php
 			}
@@ -209,6 +219,6 @@ add_action( 'admin_notices', 'reventor_brizy_show_activation_notice' );
  */
 function brizy_theme_fallback_footer_menu() {
 	echo '<ul class="footer-nav-menu">';
-	echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home', 'brizy-theme' ) . '</a></li>';
+	echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home', 'brizy-starter' ) . '</a></li>';
 	echo '</ul>';
 }

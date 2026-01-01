@@ -1,4 +1,4 @@
-# Brizy Theme
+# Brizy Starter
 
 [![WordPress](https://img.shields.io/badge/WordPress-5.0+-blue.svg)](https://wordpress.org/)
 [![Brizy](https://img.shields.io/badge/Brizy-1.0+-green.svg)](https://brizy.io/)

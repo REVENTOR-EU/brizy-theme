@@ -1,6 +1,6 @@
-=== Brizy Theme ===
+=== Brizy Starter ===
 Contributors: REVENTOR
-Tags: brizy, page-builder, minimal, lightweight
+Tags: brizy, page-builder, minimal, responsive, clean, builder, lightweight, flexible
 Requires at least: 5.0
 Tested up to: 6.5
 Stable tag: 1.0.0
