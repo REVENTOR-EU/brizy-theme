@@ -1,7 +1,9 @@
 /*
 Theme Name: Brizy Starter
 Description: A minimal WordPress theme designed specifically for maximum compatibility with Brizy page builder. This theme is NOT built by the official Brizy team. It provides only essential WordPress functionality while letting Brizy handle all design and layout decisions.
+Theme URI: https://github.com/REVENTOR-EU/brizy-theme/tree/wp-standard
 Author: REVENTOR
+Author URI: https://reventor.eu
 Version: 1.0.0
 Requires at least: 5.0
 Tested up to: 6.5
@@ -9,7 +11,7 @@ Requires PHP: 7.4
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: brizy-starter
-Tags: brizy, page-builder, minimal, responsive, clean, builder, lightweight, flexible
+Tags: page-builder
 Copyright: Copyright (c) 2025 REVENTOR. Brizy Starter is distributed under the terms of the GNU GPL.
 */
 
