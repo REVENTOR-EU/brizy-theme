@@ -75,7 +75,7 @@ add_action( 'after_setup_theme', 'reventor_brizy_setup' );
 function brizy_theme_scripts() {
 	wp_enqueue_style( 'brizy-starter-style', get_stylesheet_uri() );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'brizy-starter-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '1.0.1', true );
+	wp_enqueue_script( 'brizy-starter-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '1.0.2', true );
 
 	// Load editor styles for better editor experience
 	if ( is_admin() ) {
@@ -83,7 +83,6 @@ function brizy_theme_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'brizy_theme_scripts' );
-add_action( 'admin_enqueue_scripts', 'brizy_theme_scripts' );
 
 /**
  * Brizy Compatibility - Full width support
@@ -139,7 +138,7 @@ function reventor_brizy_activation_notice() {
 	}
 
 	// Check if Brizy is already active
-	if ( is_plugin_active( 'brizy-editor/brizy-editor.php' ) ) {
+	if ( is_plugin_active( 'brizy-editor/brizy-editor.php' ) || is_plugin_active( 'brizy/brizy.php' ) ) {
 		// Clear the notice flag if Brizy is now active
 		delete_option( 'reventor_brizy_show_notice' );
 		return;
@@ -159,8 +158,8 @@ function reventor_brizy_show_activation_notice() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 
-	// Check if Brizy is already active
-	if ( is_plugin_active( 'brizy-editor/brizy-editor.php' ) ) {
+	// Always check if Brizy is already active and delete the notice option if it is
+	if ( is_plugin_active( 'brizy-editor/brizy-editor.php' ) || is_plugin_active( 'brizy/brizy.php' ) ) {
 		delete_option( 'reventor_brizy_show_notice' );
 		return;
 	}
