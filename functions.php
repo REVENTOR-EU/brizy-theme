@@ -20,26 +20,46 @@ define( 'THEME_URI', get_template_directory_uri() );
  */
 if ( ! function_exists( 'brizy_starter_theme_setup' ) ) {
 	function brizy_starter_theme_setup() {
-        /**
-         * Make theme available for translation.
-         * Translations can be filed in the /languages/ directory.
-         * If you're building a theme based on Brizy Starter Theme, use a find and replace
-         * to change 'brizy-starter-theme' to the name of your theme in all the template files.
-         */
-        load_theme_textdomain( 'brizy-starter-theme', get_template_directory() . '/languages' );
+	       /**
+	        * Make theme available for translation.
+	        * Translations can be filed in the /languages/ directory.
+	        * If you're building a theme based on Brizy Starter Theme, use a find and replace
+	        * to change 'brizy-starter' to the name of your theme in all the template files.
+	        */
+	       load_theme_textdomain( 'brizy-starter', get_template_directory() . '/languages' );
 
-        /**
-         * Let WordPress manage the document title.
-         * By adding theme support, we declare that this theme does not use a
-         * hard-coded <title> tag in the document head, and expect WordPress to
-         * provide it for us.
-         */
-        add_theme_support( 'title-tag' );
+	       /**
+	        * Let WordPress manage the document title.
+	        * By adding theme support, we declare that this theme does not use a
+	        * hard-coded <title> tag in the document head, and expect WordPress to
+	        * provide it for us.
+	        */
+	       add_theme_support( 'title-tag' );
 
-        /**
-         * Enable support for Post Thumbnails on posts and pages.
-         */
-        add_theme_support( 'post-thumbnails' );
+	       /**
+	        * Enable support for Post Thumbnails on posts and pages.
+	        */
+	       add_theme_support( 'post-thumbnails' );
+
+	       /**
+	        * Add default posts and comments RSS feed links to head.
+	        */
+	       add_theme_support( 'automatic-feed-links' );
+
+	       /**
+	        * Add support for block styles.
+	        */
+	       add_theme_support( 'wp-block-styles' );
+
+	       /**
+	        * Add support for responsive embedded content.
+	        */
+	       add_theme_support( 'responsive-embeds' );
+
+	       /**
+	        * Add support for wide alignment for blocks.
+	        */
+	       add_theme_support( 'align-wide' );
 
         /**
          * No need for default images as Brizy generates its own.
@@ -53,9 +73,9 @@ if ( ! function_exists( 'brizy_starter_theme_setup' ) ) {
 
         register_nav_menus(
             array(
-                'primary'   => __( 'Primary Menu', 'brizy-starter-theme' ),
-                'secondary' => __( 'Secondary Menu', 'brizy-starter-theme' ),
-                'footer'    => __( 'Footer Menu', 'brizy-starter-theme' )
+                'primary'   => __( 'Primary Menu', 'brizy-starter' ),
+                'secondary' => __( 'Secondary Menu', 'brizy-starter' ),
+                'footer'    => __( 'Footer Menu', 'brizy-starter' )
             )
         );
 
@@ -87,6 +107,34 @@ if ( ! function_exists( 'brizy_starter_theme_setup' ) ) {
             )
         );
 
+        /**
+         * Add support for custom background.
+         */
+        add_theme_support(
+            'custom-background',
+            array(
+                'default-color' => 'ffffff',
+                'default-image' => '',
+            )
+        );
+
+        /**
+         * Add support for custom header.
+         */
+        add_theme_support(
+            'custom-header',
+            array(
+                'default-image'          => '',
+                'default-text-color'     => '000000',
+                'width'                  => 2000,
+                'height'                 => 250,
+                'flex-height'            => true,
+                'wp-head-callback'       => '',
+                'admin-head-callback'    => '',
+                'admin-preview-callback' => '',
+            )
+        );
+
         // TGM
         include_once(THEME_DIR . '/includes/tgm/class-tgm-plugin-activation.php');
         add_action('tgmpa_register', 'brizy_starter_theme_plugins');
@@ -100,7 +148,7 @@ add_action( 'after_setup_theme', 'brizy_starter_theme_setup' );
  */
 if ( ! function_exists( 'brizy_starter_theme_scripts_styles' ) ) {
 	function brizy_starter_theme_scripts_styles() {
-        wp_enqueue_style( 'brizy-starter-theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+        wp_enqueue_style( 'brizy-starter-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
 
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
             wp_enqueue_script( 'comment-reply' );
@@ -152,20 +200,20 @@ if ( ! function_exists( 'brizy_starter_theme_entry_footer' ) ) :
             // Posted on
             brizy_starter_theme_posted_on();
 
-            $categories_list = get_the_category_list( __( ', ', 'brizy-starter-theme' ) );
+            $categories_list = get_the_category_list( __( ', ', 'brizy-starter' ) );
             if ( $categories_list ) {
                 printf(
                     '<span class="cat-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',
-                    __( 'Posted in', 'brizy-starter-theme' ),
+                    __( 'Posted in', 'brizy-starter' ),
                     $categories_list
                 );
             }
 
-            $tags_list = get_the_tag_list( '', __( ', ', 'brizy-starter-theme' ) );
+            $tags_list = get_the_tag_list( '', __( ', ', 'brizy-starter' ) );
             if ( $tags_list ) {
                 printf(
                     '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-                    __( 'Tags:', 'brizy-starter-theme' ),
+                    __( 'Tags:', 'brizy-starter' ),
                     $tags_list
                 );
             }
@@ -185,7 +233,7 @@ if ( ! function_exists( 'brizy_starter_theme_posted_by' ) ) :
     function brizy_starter_theme_posted_by() {
         printf(
             '<span class="byline"><span class="screen-reader-text">%1$s</span><span class="author vcard"><a class="url fn n" href="%2$s">%3$s</a></span></span>',
-            __( 'Posted by', 'brizy-starter-theme' ),
+            __( 'Posted by', 'brizy-starter' ),
             esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
             esc_html( get_the_author() )
         );
@@ -228,7 +276,7 @@ if ( ! function_exists( 'brizy_starter_theme_comment_count' ) ) :
         if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
             echo '<span class="comments-link">';
 
-            comments_popup_link( sprintf( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'brizy-starter-theme' ), get_the_title() ) );
+            comments_popup_link( sprintf( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'brizy-starter' ), get_the_title() ) );
 
             echo '</span>';
         }
@@ -275,8 +323,8 @@ function brizy_ocdi_after_import_setup() {
 
 if ( ! function_exists( 'brizy_starter_theme_register_sidebar' ) ) :
     function brizy_starter_theme_register_sidebar() {
-        register_sidebars( 2, array( 'name' => 'Sidebar %d', 'brizy-starter-theme' ) );
-	register_sidebars( 4, array( 'name' => 'Footer %d', 'brizy-starter-theme' ) );
+        register_sidebars( 2, array( 'name' => 'Sidebar %d', 'id' => 'sidebar-%d', 'description' => 'Sidebar %d', 'before_widget' => '<div id="%1$s" class="widget %2$s">', 'after_widget' => '</div>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>' ) );
+        register_sidebars( 4, array( 'name' => 'Footer %d', 'id' => 'footer-%d', 'description' => 'Footer %d', 'before_widget' => '<div id="%1$s" class="widget %2$s">', 'after_widget' => '</div>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>' ) );
     }
     add_action( 'widgets_init', 'brizy_starter_theme_register_sidebar' );
 endif;
@@ -294,7 +342,7 @@ if ( ! function_exists( 'brizy_starter_theme_plugins' ) ) {
     function brizy_starter_theme_plugins() {
         $plugins = array(
             array(
-                'name'      => esc_html__('Brizy', 'brizy-starter-theme'),
+                'name'      => esc_html__('Brizy', 'brizy-starter'),
                 'slug'      => 'brizy',
                 'required'  => true
             ),
@@ -322,6 +370,45 @@ if ( ! function_exists( 'brizy_starter_theme_plugins' ) ) {
  * To predefine demo imports, you just have to add the following code structure,
  * with your own values to your theme (using the `pt-ocdi/import_files` filter):
  */
+ 
+ /**
+  * Register block styles.
+  */
+ function brizy_starter_register_block_styles() {
+     register_block_style(
+         'core/button',
+         array(
+             'name'         => 'fill-outline',
+             'label'        => __( 'Fill Outline', 'brizy-starter' ),
+             'inline_style' => '.is-style-fill-outline .wp-block-button__link { border: 2px solid currentColor; padding: 0.5em 1.5em; }',
+         )
+     );
+ }
+ add_action( 'init', 'brizy_starter_register_block_styles' );
+ 
+ /**
+  * Register block patterns.
+  */
+ function brizy_starter_register_block_patterns() {
+     register_block_pattern(
+         'brizy-starter/heading-with-paragraph',
+         array(
+             'title'       => __( 'Heading with paragraph', 'brizy-starter' ),
+             'description' => _x( 'A heading followed by a paragraph of text.', 'Block pattern description', 'brizy-starter' ),
+             'categories'  => array( 'text' ),
+             'content'     => '<!-- wp:heading {"level":2} --><h2>' . esc_html__( 'Welcome to our site', 'brizy-starter' ) . '</h2><!-- /wp:heading --><!-- wp:paragraph --><p>' . esc_html__( 'This is a sample paragraph that you can customize to fit your needs.', 'brizy-starter' ) . '</p><!-- /wp:paragraph -->',
+         )
+     );
+ }
+ add_action( 'init', 'brizy_starter_register_block_patterns' );
+ 
+ /**
+  * Add editor style.
+  */
+ function brizy_starter_add_editor_style() {
+     add_editor_style( 'style.css' );
+ }
+ add_action( 'after_setup_theme', 'brizy_starter_add_editor_style' );
 /**
 function brizy_ocdi_import_files() {
     $uri = 'http://www.your_domain.com/';
@@ -332,7 +419,7 @@ function brizy_ocdi_import_files() {
             'import_file_url'            => $uri .'architekt/demo-content.xml',
             'import_customizer_file_url' => $uri .'architekt/customizer.dat',
             'import_preview_image_url'   => $uri .'architekt/preview.png',
-            'import_notice'              => __( 'You need to <a href="'. admin_url("plugin-install.php?tab=plugin-information&plugin=woocommerce") .'" target="_blank">Install Now WooCommerce</a> plugin for this demo', 'brizy-starter-theme' ),
+            'import_notice'              => __( 'You need to <a href="'. admin_url("plugin-install.php?tab=plugin-information&plugin=woocommerce") .'" target="_blank">Install Now WooCommerce</a> plugin for this demo', 'brizy-starter' ),
             'preview_url'                => 'https://demo.themefuse.com/?theme=wordpress-business-theme',
         ),
         array(
@@ -342,7 +429,7 @@ function brizy_ocdi_import_files() {
             'import_widget_file_url'     => 'http://www.your_domain.com/ocdi/widgets2.json',
             'import_customizer_file_url' => 'http://www.your_domain.com/ocdi/customizer2.dat',
             'import_preview_image_url'   => 'http://www.your_domain.com/ocdi/preview_import_image2.jpg',
-            'import_notice'              => __( 'A special note for this import.', 'brizy-starter-theme' ),
+            'import_notice'              => __( 'A special note for this import.', 'brizy-starter' ),
             'preview_url'                => 'http://www.your_domain.com/my-demo-2',
         ),
     );
