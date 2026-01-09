@@ -135,10 +135,6 @@ if ( ! function_exists( 'brizy_starter_theme_setup' ) ) {
             )
         );
 
-        // TGM
-        include_once(THEME_DIR . '/includes/tgm/class-tgm-plugin-activation.php');
-        add_action('tgmpa_register', 'brizy_starter_theme_plugins');
-
 	}
 }
 add_action( 'after_setup_theme', 'brizy_starter_theme_setup' );
@@ -267,7 +263,6 @@ if ( ! function_exists( 'brizy_starter_theme_posted_on' ) ) :
 endif;
 
 
-
 if ( ! function_exists( 'brizy_starter_theme_comment_count' ) ) :
     /**
      * Prints HTML with the comment count for the current post.
@@ -330,51 +325,12 @@ if ( ! function_exists( 'brizy_starter_theme_register_sidebar' ) ) :
 endif;
 
 
-/** * * * * * * * * * * * * * * * * * * * * * Change this with your info * * * * * * * * * * * * * * * * * * * * * * */
+/** * * * * * * * * * * * * * * * * * * * Change this with your info * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-/**
- * TGM
- *
- * An addon which helps theme to install
- * and activate different plugins.
- */
-if ( ! function_exists( 'brizy_starter_theme_plugins' ) ) {
-    function brizy_starter_theme_plugins() {
-        $plugins = array(
-            array(
-                'name'      => esc_html__('Brizy', 'brizy-starter'),
-                'slug'      => 'brizy',
-                'required'  => true
-            ),
-        );
-        $config = array(
-            'id'           => 'tgmpa',
-            'default_path' => '',
-            'menu'         => 'tgmpa-install-plugins',
-            'parent_slug'  => 'themes.php',
-            'capability'   => 'edit_theme_options',
-            'has_notices'  => true,
-            'dismissable'  => true,
-            'dismiss_msg'  => '',
-            'is_automatic' => false,
-            'message'      => ''
-        );
-        tgmpa($plugins, $config);
-    }
-}
-
-/**
- * How to predefine demo imports?
- *
- * This question is for theme authors.
- * To predefine demo imports, you just have to add the following code structure,
- * with your own values to your theme (using the `pt-ocdi/import_files` filter):
- */
- 
  /**
-  * Register block styles.
-  */
- function brizy_starter_register_block_styles() {
+ * Register block styles.
+ */
+function brizy_starter_register_block_styles() {
      register_block_style(
          'core/button',
          array(
@@ -383,13 +339,13 @@ if ( ! function_exists( 'brizy_starter_theme_plugins' ) ) {
              'inline_style' => '.is-style-fill-outline .wp-block-button__link { border: 2px solid currentColor; padding: 0.5em 1.5em; }',
          )
      );
- }
- add_action( 'init', 'brizy_starter_register_block_styles' );
+}
+add_action( 'init', 'brizy_starter_register_block_styles' );
  
- /**
-  * Register block patterns.
-  */
- function brizy_starter_register_block_patterns() {
+/**
+ * Register block patterns.
+ */
+function brizy_starter_register_block_patterns() {
      register_block_pattern(
          'brizy-starter/heading-with-paragraph',
          array(
@@ -399,59 +355,119 @@ if ( ! function_exists( 'brizy_starter_theme_plugins' ) ) {
              'content'     => '<!-- wp:heading {"level":2} --><h2>' . esc_html__( 'Welcome to our site', 'brizy-starter' ) . '</h2><!-- /wp:heading --><!-- wp:paragraph --><p>' . esc_html__( 'This is a sample paragraph that you can customize to fit your needs.', 'brizy-starter' ) . '</p><!-- /wp:paragraph -->',
          )
      );
- }
- add_action( 'init', 'brizy_starter_register_block_patterns' );
+}
+add_action( 'init', 'brizy_starter_register_block_patterns' );
  
- /**
-  * Add editor style.
-  */
- function brizy_starter_add_editor_style() {
-     add_editor_style( 'style.css' );
- }
- add_action( 'after_setup_theme', 'brizy_starter_add_editor_style' );
 /**
-function brizy_ocdi_import_files() {
-    $uri = 'http://www.your_domain.com/';
-    return array(
-        array(
-            'import_file_name'           => 'Architekt',
-            'categories'                 => array( 'Business', 'Category 2' ),
-            'import_file_url'            => $uri .'architekt/demo-content.xml',
-            'import_customizer_file_url' => $uri .'architekt/customizer.dat',
-            'import_preview_image_url'   => $uri .'architekt/preview.png',
-            'import_notice'              => __( 'You need to <a href="'. admin_url("plugin-install.php?tab=plugin-information&plugin=woocommerce") .'" target="_blank">Install Now WooCommerce</a> plugin for this demo', 'brizy-starter' ),
-            'preview_url'                => 'https://demo.themefuse.com/?theme=wordpress-business-theme',
-        ),
-        array(
-            'import_file_name'           => 'Demo Import 2',
-            'categories'                 => array( 'New category', 'Old category' ),
-            'import_file_url'            => 'http://www.your_domain.com/ocdi/demo-content2.xml',
-            'import_widget_file_url'     => 'http://www.your_domain.com/ocdi/widgets2.json',
-            'import_customizer_file_url' => 'http://www.your_domain.com/ocdi/customizer2.dat',
-            'import_preview_image_url'   => 'http://www.your_domain.com/ocdi/preview_import_image2.jpg',
-            'import_notice'              => __( 'A special note for this import.', 'brizy-starter' ),
-            'preview_url'                => 'http://www.your_domain.com/my-demo-2',
-        ),
-    );
+ * Add editor style.
+ */
+function brizy_starter_add_editor_style() {
+     add_editor_style( 'style.css' );
 }
-add_filter( 'pt-ocdi/import_files', 'brizy_ocdi_import_files' );
+add_action( 'after_setup_theme', 'brizy_starter_add_editor_style' );
 
-function BrizyAuthorLicenseActivationData() {
-    return array(
-        'market'   => 'brizy',
-        'author'   => 'brizy',
-        'theme_id' => '000000'
-    );
+/**
+ * Set transient on theme activation to show plugin install notice
+ */
+function brizy_starter_theme_activation() {
+    set_transient( 'brizy_starter_activation_notice', true, 5 * DAY_IN_SECONDS );
 }
-add_filter( 'brizy-pro-license-data', 'BrizyAuthorLicenseActivationData' );
+add_action( 'after_switch_theme', 'brizy_starter_theme_activation' );
 
-function BrizyAuthorSupportURL() {
-    return 'https://support.your-site.com';
-}
-add_filter( 'brizy_support_url', 'BrizyAuthorSupportURL' );
+/**
+ * Display admin notice to install Brizy plugin
+ */
+function brizy_starter_plugin_install_notice() {
+    // Check if transient is set and user has permission
+    if ( ! get_transient( 'brizy_starter_activation_notice' ) ) {
+        return;
+    }
 
-function BrizyAuthorUpgradeToProAff() {
-    return 'https://brizy.io/pro?your-aff-id';
+    // Check if Brizy plugin is already installed or activated
+    $plugin_path = 'brizy/brizy.php';
+    if ( is_plugin_active( $plugin_path ) ) {
+        delete_transient( 'brizy_starter_activation_notice' );
+        return;
+    }
+
+    // Check if plugin is installed but not activated
+    $installed_plugins = get_plugins();
+    $is_installed = isset( $installed_plugins[ $plugin_path ] );
+
+    // Build the plugin install/activate URL
+    if ( $is_installed ) {
+        $action_url = wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=' . $plugin_path ), 'activate-plugin_' . $plugin_path );
+        $button_text = __( 'Activate Brizy Plugin', 'brizy-starter' );
+    } else {
+        $action_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=brizy' ), 'install-plugin_brizy' );
+        $button_text = __( 'Install Brizy Plugin', 'brizy-starter' );
+    }
+
+    // Display the notice
+    ?>
+    <div class="notice notice-info is-dismissible" id="brizy-starter-activation-notice">
+        <h2><?php esc_html_e( 'Welcome to Brizy Starter Theme!', 'brizy-starter' ); ?></h2>
+        <p>
+            <?php
+            if ( $is_installed ) {
+                esc_html_e( 'This theme is built to be used in conjunction with the Brizy plugin. Please activate Brizy now to start building.', 'brizy-starter' );
+            } else {
+                esc_html_e( 'This theme is built to be used in conjunction with the Brizy plugin. Please install Brizy now to start building.', 'brizy-starter' );
+            }
+            ?>
+        </p>
+        <p>
+            <a href="<?php echo esc_url( $action_url ); ?>" class="button button-primary">
+                <?php echo esc_html( $button_text ); ?>
+            </a>
+            <a href="<?php echo esc_url( 'https://wordpress.org/plugins/brizy/' ); ?>" target="_blank" class="button">
+                <?php esc_html_e( 'Learn More', 'brizy-starter' ); ?>
+            </a>
+            <button type="button" class="button button-secondary brizy-starter-dismiss-notice">
+                <?php esc_html_e( 'Dismiss', 'brizy-starter' ); ?>
+            </button>
+        </p>
+    </div>
+    <script>
+    jQuery(document).ready(function($) {
+        // Handle dismiss button click
+        $('.brizy-starter-dismiss-notice').on('click', function() {
+            $('#brizy-starter-activation-notice').fadeOut('fast', function() {
+                $(this).remove();
+            });
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'brizy_starter_dismiss_notice',
+                    nonce: '<?php echo wp_create_nonce( 'brizy_starter_dismiss_notice' ); ?>'
+                }
+            });
+        });
+
+        // Handle WordPress built-in dismiss button
+        $('#brizy-starter-activation-notice .notice-dismiss').on('click', function() {
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'brizy_starter_dismiss_notice',
+                    nonce: '<?php echo wp_create_nonce( 'brizy_starter_dismiss_notice' ); ?>'
+                }
+            });
+        });
+    });
+    </script>
+    <?php
 }
-add_filter( 'brizy_upgrade_to_pro_url', 'BrizyAuthorUpgradeToProAff' );
-*/
+add_action( 'admin_notices', 'brizy_starter_plugin_install_notice' );
+
+/**
+ * Handle AJAX request to dismiss the notice
+ */
+function brizy_starter_dismiss_notice_ajax() {
+    check_ajax_referer( 'brizy_starter_dismiss_notice', 'nonce' );
+    delete_transient( 'brizy_starter_activation_notice' );
+    wp_send_json_success();
+}
+add_action( 'wp_ajax_brizy_starter_dismiss_notice', 'brizy_starter_dismiss_notice_ajax' );
