@@ -1,10 +1,10 @@
-=== Brizy Starter Theme ===
+=== Brizy Starter ===
 
 Contributors: REVENTOR
 Requires at least: WordPress 6.0
 Tested up to: WordPress 7.0
-Stable tag: 1.0.2
-Version: 1.0.2
+Stable tag: 1.0.3
+Version: 1.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: custom-logo, featured-images, threaded-comments, translation-ready
@@ -38,6 +38,11 @@ In order to change the styling used throughout the site, use **Brizy**.
 3. Click on the 'Activate' button to use your new theme right away.
 
 == Changelog ==
+
+= 1.0.3 =
+* Released: January 9, 2026
+
+* Changed theme name to "Brizy Starter"
 
 = 1.0.2 =
 * Released: January 9, 2026
